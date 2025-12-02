@@ -2,7 +2,7 @@ const input = document.getElementById("chatInput");
 const sendBtn = document.getElementById("chatSend");
 const chatArea = document.getElementById("chatMessages");
 
-// alternador: 0 = Anônimo, 1 = Atendente
+// alternador: se 0 = sempre Anônimo, e se 1 = sempre Atendente
 let turno = 0;
 
 function enviarMensagem() {
@@ -10,7 +10,7 @@ function enviarMensagem() {
 
     if (texto === "") return;
 
-    // Define nome conforme o turno
+    // Alterna os nomes conforme seu turno
     const nome = turno === 0 ? "Anônimo" : "Atendente";
 
     // Cria elemento <p>
@@ -30,12 +30,11 @@ function enviarMensagem() {
     turno = turno === 0 ? 1 : 0;
 }
 
-// Botão enviar
 sendBtn.addEventListener("click", enviarMensagem);
 
-// Enter para enviar
 input.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
         enviarMensagem();
     }
 });
+

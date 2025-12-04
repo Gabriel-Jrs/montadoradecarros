@@ -1,0 +1,102 @@
+/* === CAIXA DE PERSONALIZAÇÃO DO CARRO === */
+.custom-box {
+    background: linear-gradient(to bottom, #111, #000);
+    color: #f4b400;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* TÍTULO */
+.custom-box h2 {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 20px;
+}
+
+/* LABELS */
+.custom-box label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+    color: #f4b400;
+}
+
+/* SELECTS */
+.custom-box select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    background: #fff;
+    color: #000;
+}
+
+/* PREÇO FINAL */
+.custom-box h3 {
+    margin-top: 18px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* === ÁREA DE FOTOS DO CARRO === */
+.foto-area {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.foto-area img {
+    width: 32%;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+/* === GALERIA SUPERIOR DE FOTOS (CASO USE) === */
+.carro-gallery {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.carro-gallery .foto-carro {
+    width: 30%;
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+/* === BOTÃO PADRÃO DA PERSONALIZAÇÃO === */
+.custom-box button {
+    width: 100%;
+    padding: 14px;
+    background: #f4b400;
+    color: #000;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.custom-box button:hover {
+    background: #d19c00;
+}
+
+/* === TEXTO DO RESULTADO E PREÇO === */
+#precoFinal {
+    color: #f4b400;
+    font-weight: bold;
+}

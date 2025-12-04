@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuração de Carro</title>
-    <link rel="stylesheet" href="personalizacao.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="personalizacao.css">
     <link rel="icon" href="img/logovell.png" type="image/x-icon">
 </head>
 
@@ -119,106 +119,114 @@
         <div class="comprar">
             <button id="btnComprar">COMPRAR</button>
         </div>
+        <div id="linksDocumentos"></div>
     </div>
 
     <!-- SCRIPT -->
     <script>
 
-        const modelo = document.getElementById("modelo");
-        const rodas = document.getElementById("rodas");
-        const bancos = document.getElementById("bancos");
-        const som = document.getElementById("som");
-        const ar = document.getElementById("ar");
-        const precoFinal = document.getElementById("precoFinal");
+    const modelo = document.getElementById("modelo");
+    const rodas = document.getElementById("rodas");
+    const bancos = document.getElementById("bancos");
+    const som = document.getElementById("som");
+    const ar = document.getElementById("ar");
+    const precoFinal = document.getElementById("precoFinal");
 
-        const fotoFrente = document.getElementById("fotoFrente");
-        const fotoLado = document.getElementById("fotoLado");
-        const foto45 = document.getElementById("foto45");
+    const fotoFrente = document.getElementById("fotoFrente");
+    const fotoLado = document.getElementById("fotoLado");
+    const foto45 = document.getElementById("foto45");
 
-        let precoBase = 0;
+    let precoBase = 0;
 
-        /* FUNÇÃO DE FOTOS */
-        function atualizarFotos() {
-            const modeloSelecionado = modelo.options[modelo.selectedIndex].dataset.carro;
+    function atualizarFotos() {
+        const modeloSelecionado = modelo.options[modelo.selectedIndex].dataset.carro;
+        fotoFrente.src = `img/${modeloSelecionado}-frente.png`;
+        fotoLado.src = `img/${modeloSelecionado}-lado.png`;
+        foto45.src = `img/${modeloSelecionado}-45.png`;
+    }
 
-            fotoFrente.src = `img/${modeloSelecionado}-frente.png`;
-            fotoLado.src = `img/${modeloSelecionado}-lado.png`;
-            foto45.src = `img/${modeloSelecionado}-45.png`;
+    function atualizarPreco() {
+        precoBase =
+            Number(modelo.value) +
+            Number(rodas.value) +
+            Number(bancos.value) +
+            Number(som.value) +
+            Number(ar.value);
+
+        precoFinal.textContent = precoBase.toLocaleString("pt-BR");
+        atualizarFotos();
+    }
+
+    modelo.addEventListener("change", atualizarPreco);
+    rodas.addEventListener("change", atualizarPreco);
+    bancos.addEventListener("change", atualizarPreco);
+    som.addEventListener("change", atualizarPreco);
+    ar.addEventListener("change", atualizarPreco);
+
+    atualizarPreco();
+
+
+
+    /* DESCONTO */
+    function gerarDesconto() {
+
+        const nome = document.getElementById("nomeDesc").value.trim();
+        const idade = Number(document.getElementById("idadeDesc").value);
+        const renda = Number(document.getElementById("rendaDesc").value);
+        const clienteAntigo = document.getElementById("clienteAntigo").checked;
+        const resultado = document.getElementById("resultadoDesconto");
+
+        if (nome === "" || idade === 0 || renda === 0) {
+            resultado.innerHTML = `<p style="color:#f33;">Preencha tudo corretamente.</p>`;
+            return;
         }
 
-        /* PREÇO */
-        function atualizarPreco() {
-            precoBase =
-                Number(modelo.value) +
-                Number(rodas.value) +
-                Number(bancos.value) +
-                Number(som.value) +
-                Number(ar.value);
+        let desconto = 0;
+        let motivos = [];
 
-            precoFinal.textContent = precoBase.toLocaleString("pt-BR");
-            atualizarFotos();
-        }
+        if (idade < 21) { desconto += 5; motivos.push("Desconto Jovem (5%)"); }
+        if (idade >= 60) { desconto += 10; motivos.push("Desconto Sênior (10%)"); }
+        if (renda < 2500) { desconto += 10; motivos.push("Apoio Econômico (10%)"); }
+        else if (renda <= 5000) { desconto += 5; motivos.push("Classe Média (5%)"); }
+        if (clienteAntigo) { desconto += 5; motivos.push("Cliente Fidelidade (5%)"); }
 
-        modelo.addEventListener("change", atualizarPreco);
-        rodas.addEventListener("change", atualizarPreco);
-        bancos.addEventListener("change", atualizarPreco);
-        som.addEventListener("change", atualizarPreco);
-        ar.addEventListener("change", atualizarPreco);
+        if (desconto > 20) desconto = 20;
 
-        atualizarPreco();
-        function gerarDesconto() {
-
-            const nome = document.getElementById("nomeDesc").value.trim();
-            const idade = Number(document.getElementById("idadeDesc").value);
-            const renda = Number(document.getElementById("rendaDesc").value);
-            const clienteAntigo = document.getElementById("clienteAntigo").checked;
-            const resultado = document.getElementById("resultadoDesconto");
-
-            if (nome === "" || idade === 0 || renda === 0) {
-                resultado.innerHTML = `<p style="color:#f33;">Preencha tudo corretamente.</p>`;
-                return;
-            }
-
-            let desconto = 0;
-            let motivos = [];
-
-            if (idade < 21) { desconto += 5; motivos.push("Desconto Jovem (5%)"); }
-            if (idade >= 60) { desconto += 10; motivos.push("Desconto Sênior (10%)"); }
-            if (renda < 2500) { desconto += 10; motivos.push("Apoio Econômico (10%)"); }
-            else if (renda <= 5000) { desconto += 5; motivos.push("Classe Média (5%)"); }
-            if (clienteAntigo) { desconto += 5; motivos.push("Cliente Fidelidade (5%)"); }
-
-            if (desconto > 20) desconto = 20;
-
-            resultado.innerHTML = `
-        <p style="color:#0f0; font-size:1.3rem;">${nome}, você ganhou ${desconto}% de desconto!</p>
-        <p style="color:#fff;">Motivos:<br>• ${motivos.join("<br>• ")}</p>
-    `;
-            document.querySelector(".comprar").style.display = "block";
-        }
-
-        document.getElementById("btnComprar").addEventListener("click", function () {
-
-            const confirmar = confirm(
-                "Deseja gerar os documentos?\n\n• Garantia do Veículo\n• Termos de Contrato Vellosci"
-            );
-
-            if (confirmar) {
-
-                document.getElementById("linksDocumentos").innerHTML = `
-            <div style="background:#111; padding:15px; margin-top:20px; border-radius:10px; color:white;">
-                <h3>Documentos Disponíveis:</h3>
-                <a href="docs/garantia.pdf" target="_blank" style="color:#4cd137;">Garantia do Veículo</a><br>
-                <a href="docs/termos.pdf" target="_blank" style="color:#4cd137;">Termos de Contrato Vellosci</a>
-            </div>
+        resultado.innerHTML = `
+            <p style="color:#0f0; font-size:1.3rem;">${nome}, você ganhou ${desconto}% de desconto!</p>
+            <p style="color:#fff;">Motivos:<br>• ${motivos.join("<br>• ")}</p>
         `;
-            } else {
-                alert("Geração cancelada.");
-            }
-        });
+
+        document.querySelector(".comprar").style.display = "block";
+    }
 
 
-    </script>
+
+    /* BOTÃO COMPRAR */
+    document.getElementById("btnComprar").addEventListener("click", function () {
+
+        // ALERT COM PREÇO
+        alert("Preço final da compra: R$ " + precoBase.toLocaleString("pt-BR"));
+
+        const confirmar = confirm(
+            "Deseja gerar os documentos?\n\n• Garantia do Veículo\n• Termos de Contrato Vellosci"
+        );
+
+        if (confirmar) {
+            document.getElementById("linksDocumentos").innerHTML = `
+                <div style="background:#111; padding:15px; margin-top:20px; border-radius:10px; color:white;">
+                    <h3>Documentos Disponíveis:</h3>
+                    <a href="docs/garantia.pdf" target="_blank" style="color:#4cd137;">Garantia do Veículo</a><br>
+                    <a href="docs/termos.pdf" target="_blank" style="color:#4cd137;">Termos de Contrato Vellosci</a>
+                </div>
+            `;
+        } else {
+            alert("Geração cancelada.");
+        }
+    });
+
+</script>
+
 
 
     <!-- FOOTER -->
@@ -279,6 +287,7 @@
 
         <div class="footer-bottom">
             © 2025 Vellosci Motors — Todos os direitos reservados.
+            <small>Desenvolvido por Microtech Studios</small>
         </div>
     </footer>
 

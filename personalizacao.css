@@ -1,102 +1,161 @@
-/* === CAIXA DE PERSONALIZAÇÃO DO CARRO === */
-.custom-box {
+/* ====== CAIXA PRINCIPAL ====== */
+.desconto-box {
     background: linear-gradient(to bottom, #111, #000);
-    color: #f4b400;
+    color: #fff;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 16px;
     width: 100%;
     max-width: 900px;
     margin: 40px auto;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
 }
 
 /* TÍTULO */
-.custom-box h2 {
+.desconto-box h2 {
     text-align: center;
-    font-size: 1.9rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffb300;
+    margin-bottom: 25px;
 }
 
 /* LABELS */
+.desconto-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    color: #ffcc66;
+    font-weight: 600;
+}
+
+/* INPUTS */
+.desconto-box input[type="text"],
+.desconto-box input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* CHECKBOX */
+.desconto-box input[type="checkbox"] {
+    margin-right: 6px;
+    transform: scale(1.2);
+}
+
+/* BOTÃO PRINCIPAL */
+.desconto-box button {
+    width: 100%;
+    padding: 14px;
+    background: #f1a500;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.25s ease;
+}
+
+.desconto-box button:hover {
+    background: #d98c00;
+    color: #fff;
+}
+
+/* ÁREA DO BOTÃO COMPRAR */
+.comprar {
+    display: none;
+    margin-top: 20px;
+}
+
+/* BOTÃO "COMPRAR" */
+#btnComprar {
+    background: #ffb300;
+    font-size: 1.3rem;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 900;
+}
+
+#btnComprar:hover {
+    background: #cc8e00;
+    color: #fff;
+}
+
+/* RESULTADO DO DESCONTO */
+#resultadoDesconto {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+
+/* ================= GALERIA DE FOTOS ================ */
+
+.carro-gallery {
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.foto-carro {
+    width: 30%;
+    border-radius: 14px;
+    background: #111;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+
+/* ================ BOX DE PERSONALIZAÇÃO ================ */
+
+.custom-box {
+    background: linear-gradient(to bottom, #111, #000);
+    color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+
+.custom-box h2 {
+    text-align: center;
+    font-size: 2.1rem;
+    color: #ffb300;
+    margin-bottom: 20px;
+}
+
+/* Labels do custom-box */
 .custom-box label {
     display: block;
     margin: 12px 0 6px;
-    font-weight: bold;
-    color: #f4b400;
+    color: #ffb300;
+    font-weight: 600;
 }
 
 /* SELECTS */
 .custom-box select {
     width: 100%;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: none;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    outline: none;
     font-size: 1rem;
-    background: #fff;
-    color: #000;
 }
 
 /* PREÇO FINAL */
 .custom-box h3 {
-    margin-top: 18px;
-    font-size: 1.5rem;
-    color: #fff;
+    margin-top: 20px;
     text-align: center;
-}
-
-/* === ÁREA DE FOTOS DO CARRO === */
-.foto-area {
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.foto-area img {
-    width: 32%;
-    border-radius: 12px;
-    background: #000;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
-}
-
-/* === GALERIA SUPERIOR DE FOTOS (CASO USE) === */
-.carro-gallery {
-    width: 100%;
-    max-width: 900px;
-    margin: 20px auto 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.carro-gallery .foto-carro {
-    width: 30%;
-    border-radius: 12px;
-    box-shadow: 0 0 18px rgba(0,0,0,0.7);
-}
-
-/* === BOTÃO PADRÃO DA PERSONALIZAÇÃO === */
-.custom-box button {
-    width: 100%;
-    padding: 14px;
-    background: #f4b400;
-    color: #000;
-    border: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-}
-
-.custom-box button:hover {
-    background: #d19c00;
-}
-
-/* === TEXTO DO RESULTADO E PREÇO === */
-#precoFinal {
-    color: #f4b400;
-    font-weight: bold;
+    font-size: 1.6rem;
+    color: #ffb300;
+    font-weight: 900;
 }

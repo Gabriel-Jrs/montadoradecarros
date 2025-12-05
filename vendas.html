@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuração de Carro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendas.css">
+    <link rel="icon" href="img/logovell.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="img/logovell.png" alt="Vellosci logo" loading="lazy">
+        <h1>VELLOSCI</h1>
+        <nav>
+            <a href="carros.html">Voltar</a>
+
+        </nav>
+    </header>
+<div class="corpo">
+    <div class="carro-gallery">
+        <img id="foto45" class="foto-carro" src="img/tynel-45.png" alt="Carro 45 Graus">
+    </div>
+
+
+    <!-- FORMULÁRIO -->
+    <div class="desconto-box">
+
+        <h2>Personalização do Carro</h2>
+
+        <label>Modelo:</label>
+        <select id="modelo">
+            <optgroup label="Compactos">
+                <option value="60060" data-carro="tynel">Vellosci Tynel</option>
+                <option value="81600" data-carro="vero">Vellosci Vero</option>
+                <option value="72400" data-carro="elyx">Vellosci Elyx</option>
+            </optgroup>
+
+            <optgroup label="Sedans">
+                <option value="146200" data-carro="magnus">Vellosci Magnus</option>
+                <option value="320000" data-carro="elyon">Vellosci Elyon</option>
+                <option value="238000" data-carro="taurus">Vellosci Taurus</option>
+            </optgroup>
+
+            <optgroup label="Caminhonetes">
+                <option value="508000" data-carro="kardon">Vellosci Kardon</option>
+                <option value="482300" data-carro="voltanna">Vellosci Voltanna</option>
+            </optgroup>
+
+            <optgroup label="SUVs">
+                <option value="402000" data-carro="trion">Vellosci Trion</option>
+                <option value="312500" data-carro="kairon">Vellosci Kairon</option>
+            </optgroup>
+
+            <optgroup label="Esportivos">
+                <option value="1850600" data-carro="lancerra">Vellosci Lancerra</option>
+                <option value="4560000" data-carro="vyntra">Vellosci Vyntra</option>
+            </optgroup>
+        </select>
+
+        <label>Rodas:</label>
+        <select id="rodas">
+            <option value="0">Padrão (R$ 0)</option>
+            <option value="1500">Liga Leve (R$ 1.500)</option>
+            <option value="3500">Esportiva (R$ 3.500)</option>
+        </select>
+
+        <label>Bancos:</label>
+        <select id="bancos">
+            <option value="0">Tecido (R$ 0)</option>
+            <option value="2000">Couro (R$ 2.000)</option>
+            <option value="3800">Premium (R$ 3.800)</option>
+        </select>
+
+        <label>Som:</label>
+        <select id="som">
+            <option value="0">Padrão (R$ 0)</option>
+            <option value="1200">Alto-falantes Premium (R$ 1.200)</option>
+            <option value="2500">Som Surround (R$ 2.500)</option>
+        </select>
+
+        <label>Ar Condicionado:</label>
+        <select id="ar">
+            <option value="0">Normal (R$ 0)</option>
+            <option value="1800">Digital (R$ 1.800)</option>
+        </select>
+
+        <h3>Preço Final: R$ <span id="precoFinal">0</span></h3>
+    </div>
+
+
+    <!-- DESCONTO -->
+    <div class="desconto-box">
+        <h2>Calcular Desconto</h2>
+
+        <label>Nome:</label>
+        <input type="text" id="nomeDesc">
+
+        <label>Idade:</label>
+        <input type="number" id="idadeDesc">
+
+        <label>Renda mensal (R$):</label>
+        <input type="number" id="rendaDesc">
+
+        <label>
+            <input type="checkbox" id="clienteAntigo">
+            Cliente antigo da Vellosci
+        </label>
+
+        <button onclick="gerarDesconto()">Gerar Desconto</button>
+
+        <div id="resultadoDesconto"></div>
+
+        <div class="comprar">
+            <button id="btnComprar">COMPRAR</button>
+        </div>
+        <div id="linksDocumentos"></div>
+    </div>
+</div>
+
+    <script>
+        const modelo = document.getElementById("modelo");
+        const rodas = document.getElementById("rodas");
+        const bancos = document.getElementById("bancos");
+        const som = document.getElementById("som");
+        const ar = document.getElementById("ar");
+        const precoFinal = document.getElementById("precoFinal");
+        const foto45 = document.getElementById("foto45");
+
+        let precoBase = 0;
+
+        function getValor(id) {
+            return Number(document.getElementById(id).value);
+        }
+
+        function atualizarFotos() {
+            const m = modelo.options[modelo.selectedIndex].dataset.carro;
+            foto45.src = `img/${m}-45.png`;
+        }
+
+        function atualizarPreco() {
+            precoBase =
+                getValor("modelo") +
+                getValor("rodas") +
+                getValor("bancos") +
+                getValor("som") +
+                getValor("ar");
+
+            precoFinal.textContent = precoBase.toLocaleString("pt-BR");
+            atualizarFotos();
+        }
+
+        ["modelo", "rodas", "bancos", "som", "ar"].forEach(id =>
+            document.getElementById(id).addEventListener("change", atualizarPreco)
+        );
+
+        atualizarPreco();
+
+        function gerarDesconto() {
+            const nome = document.getElementById("nomeDesc").value.trim();
+            const idade = Number(document.getElementById("idadeDesc").value);
+            const renda = Number(document.getElementById("rendaDesc").value);
+            const clienteAntigo = document.getElementById("clienteAntigo").checked;
+            const resultado = document.getElementById("resultadoDesconto");
+
+            if (!nome || !idade || !renda) {
+                resultado.innerHTML = `<p style="color:#f33;">Preencha tudo corretamente.</p>`;
+                return;
+            }
+
+            let desconto = 0;
+            const motivos = [];
+
+            if (idade < 21) { desconto += 5; motivos.push("Desconto Jovem (5%)"); }
+            if (idade >= 60) { desconto += 10; motivos.push("Desconto Sênior (10%)"); }
+            if (renda < 2500) { desconto += 10; motivos.push("Apoio Econômico (10%)"); }
+            else if (renda <= 5000) { desconto += 5; motivos.push("Classe Média (5%)"); }
+            if (clienteAntigo) { desconto += 5; motivos.push("Cliente Fidelidade (5%)"); }
+
+            if (desconto > 20) desconto = 20;
+
+            resultado.innerHTML = `
+        <p style="color:#0f0; font-size:1.3rem;">${nome}, você ganhou ${desconto}% de desconto!</p>
+        <p style="color:#fff;">Motivos:<br>• ${motivos.join("<br>• ")}</p>
+    `;
+
+            document.querySelector(".comprar").style.display = "block";
+        }
+
+        document.getElementById("btnComprar").addEventListener("click", () => {
+            alert("Preço final da compra: R$ " + precoBase.toLocaleString("pt-BR"));
+
+            const confirmar = confirm(
+                "Deseja gerar os documentos?\n\n• Garantia do Veículo\n• Termos de Contrato Vellosci"
+            );
+
+            if (confirmar) {
+                document.getElementById("linksDocumentos").innerHTML = `
+            <div style="background:#111; padding:15px; margin-top:20px; border-radius:10px; color:white;">
+                <h3>Documentos Disponíveis:</h3>
+                <a href="docs/garantia.pdf" target="_blank" style="color:#4cd137;">Garantia do Veículo</a><br>
+                <a href="docs/termos.pdf" target="_blank" style="color:#4cd137;">Termos de Contrato Vellosci</a>
+            </div>
+        `;
+            } else {
+                alert("Geração cancelada.");
+            }
+        });
+
+
+    </script>
+
+
+
+    <!-- FOOTER -->
+    <footer class="vellosci-footer">
+
+        <div class="footer-logo-area">
+            <img src="img/logovell.png" class="footer-logo-vell">
+            <p class="microtec">Vellosci</p>
+        </div>
+
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>Vellosci Motors</h3> <br>
+                <p>Excelência em engenharia automotiva desde 1989.</p><br>
+                <ul class="footer-links">
+                    <li><a href="#">Sobre a empresa</a></li>
+                    <li><a href="#">Nossas fábricas</a></li>
+                    <li><a href="#">Pesquisa & Inovação</a></li>
+                    <li><a href="#">Sustentabilidade</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Diretoria Executiva</h4>
+                <ul>
+                    <li><strong>CEO:</strong> Carlos A. Vellosci</li>
+                    <li><strong>Inovação:</strong> Dirceu Vellosci</li>
+                    <li><strong>Engenharia:</strong> Marcos Severo</li>
+                    <li><strong>Marketing:</strong> Helena Andrade</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li>Email: atendimento@vellosci.com</li>
+                    <li>Telefone: +55 (34) 90000-0000</li>
+                </ul>
+
+                <h4 style="margin-top: 20px;">Atendimento</h4>
+                <ul>
+                    <li>Seg - Sex: 08:00 às 18:00</li>
+                    <li>Sáb: 08:00 às 12:00</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Redes Sociais</h4>
+                <ul class="footer-socials">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Vellosci Motors — Todos os direitos reservados.</p>
+            <small>Desenvolvido por Microtech Studios</small>
+        </div>
+    </footer>
+
+</body>
+
+</html>

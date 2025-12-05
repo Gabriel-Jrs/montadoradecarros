@@ -1,0 +1,121 @@
+.desconto-box {
+    background: #000000;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 850px;
+    width: 90%;
+    margin: 40px auto;
+    border: 1px solid #333;
+}
+.carro-gallery {
+    width: 300px;
+    background: #000; 
+    padding: 40px 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.foto-carro {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.desconto-box h2 {
+    color: #ff9900;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+#italico {
+    text-align: center;
+    color: #d2d2d2;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.desconto-box label {
+    color: #ff9900;
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+}
+
+.desconto-box input,
+.desconto-box select,
+.desconto-box textarea {
+    width: 100%;
+    background: #d2d2d2;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.desconto-box textarea {
+    min-height: 70px;
+    max-height: 150px;
+    resize: vertical;
+}
+
+#btnSortear,
+.desconto-box button {
+    width: 100%;
+    background: #ff9900;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+#btnSortear:hover,
+.desconto-box button:hover {
+    background: #e18700;
+}
+
+#resultadoDesconto {
+    text-align: center;
+    color: #d2d2d2;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+#linksDocumentos div {
+    background: #000000;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.comprar {
+    display: none;
+    margin-top: 15px;
+}
+
+.comprar button {
+    width: 100%;
+    background: #ff9900;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.comprar button:hover {
+    background: #ff9900;
+}

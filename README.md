@@ -5,7 +5,6 @@ Site do trabalho final na matéria de laboratório de programação ll, é um si
 
 A página inicial apresentará a história da Vellosci, seus destaques, compromisso ambiental, parcerias, informações sobre a linha de produção e os países onde a marca atua.
 Será uma introdução completa ao site e à empresa, destacando sua responsabilidade ambiental e expansão internacional.
-  -Add: Carrocel
 
 2. Sobre a Montadora – Estrutura, Produção e Inovação
 
@@ -15,7 +14,7 @@ O JavaScript será usado para exibir vídeos, galerias de fotos e animações qu
 
 3. Carros – Carros à Venda e Descontos
 
-Nessa página, o visitante poderá ver os carros disponíveis para compra, divididos por classes (como compactos, sedans, esportivos e SUVs), com imagens, descrições e preços. Também haverá um ~~formulário para o cliente verificar se tem direito a descontos especiais~~
+Nessa página, o visitante poderá ver os carros disponíveis para compra, divididos por classes (como compactos, sedans, esportivos e SUVs), com imagens, descrições e preços. ~~formulário para o cliente verificar se tem direito a descontos especiais~~
 ~~O JavaScript será usado para filtrar os veículos por categoria e validar o formulário de descontos, tornando o processo mais interativo.~~
 
 
@@ -28,7 +27,7 @@ O JavaScript será o principal recurso aqui, responsável por mostrar as mudanç
 
 ~~Aqui estarão as informações sobre garantia dos veículos ,termos de uso, reclamações, elogios e orientações sobre problemas contratuais. O cliente poderá enviar mensagens ou registrar solicitações por meio de um formulário simples.
 O JavaScript será usado apenas para enviar os formulários e mostrar mensagens de confirmação~~
- -- Chta onde pode haver interação entre os usuarios vellosci
+ -- Chata onde pode haver interação entre os usuarios vellosci
 
 
 6. Contato – MicroTech e Trabalhos Anteriores
@@ -39,3 +38,5 @@ Será uma página de apresentação institucional
 
 
 LINK FIGMA -> https://www.figma.com/design/f9UY5W8trXKJfJrLhuzqLN/Sem-t%C3%ADtulo?node-id=0-1&t=NNusr3ca8VdmytHs-1
+
+LINK SITE GITHUB —> 

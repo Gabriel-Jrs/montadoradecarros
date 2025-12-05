@@ -39,4 +39,4 @@ Será uma página de apresentação institucional
 
 LINK FIGMA -> https://www.figma.com/design/f9UY5W8trXKJfJrLhuzqLN/Sem-t%C3%ADtulo?node-id=0-1&t=NNusr3ca8VdmytHs-1
 
-LINK SITE GITHUB —> 
+LINK SITE GITHUB —> https://gabriel-jrs.github.io/montadoradecarros/

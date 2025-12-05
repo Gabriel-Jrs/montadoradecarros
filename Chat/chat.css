@@ -1,0 +1,182 @@
+body {
+    background: #d0d0d0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* TOPO */
+.topo {
+    background: #000;
+    color: #f4b400;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO + TEXTO */
+.topo .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* espaço entre logo e texto */
+}
+
+.logo-img {
+    height: 28px;      
+    width: auto;
+    display: block;
+}
+
+.logo-text {
+    color: #f4b400;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.topo nav a {
+    text-decoration: none;
+    color: #f4b400;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* TÍTULO COMUNIDADE */
+.titulo {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 42px;
+    font-weight: 900;
+    background: #000;
+    color: #f4b400;
+    padding: 15px 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+/* CAIXA PRINCIPAL */
+.chat-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 20px;
+    background: #e8d28c;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* TÍTULO DO CHAT */
+.chat-titulo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* ÁREA DO CHAT */
+.chat-area {
+    background: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    height: 420px;
+    overflow-y: auto;
+}
+
+.chat-area p {
+    background: #000;
+    color: #fff;
+    font-size: 17px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+/* INPUTS */
+.chat-input {
+    margin-top: 15px;
+    display: flex;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    font-size: 16px;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 12px 20px;
+    background: #000;
+    color: #f4b400;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.chat-input button:hover {
+    opacity: 0.8;
+}
+.rodape {
+    background: #000;
+    padding: 20px 0;
+    margin-top: 40px;
+    color: #f4b400;
+}
+
+.rodape-conteudo {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo do rodapé */
+.rodape-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rodape-logo-img {
+    height: 26px;
+    width: auto;
+}
+
+.rodape-logo-text {
+    color: #f4b400;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Links */
+.rodape-name a {
+    text-decoration: none;
+    color: #f4b400;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.rodape-name a:hover {
+    opacity: 0.7;
+}
+
+.rodape-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
